@@ -1,0 +1,26 @@
+
+.profile-image  > img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+}
+
+.profile-image{
+    position: relative;
+    padding: 5px;
+}
+
+.profile-image > button {
+    position: absolute;
+    bottom: 10px;
+    top:auto;
+    left:56%;
+}
+
+@media (max-width:400px) {
+    .profile-image > button{
+        left: 63%;
+    }
+}

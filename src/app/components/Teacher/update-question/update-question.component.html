@@ -1,0 +1,96 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto p-3">
+            <mat-card>
+                <form #questionform="ngForm" (ngSubmit)="updateQuestion(questionform)">
+                    <!-- {{questionModel| json}} -->
+                    <h2 class="text-center mb-3">Update Question</h2>
+                    <mat-form-field class="field" appearance="outline">
+                        <mat-label>Question</mat-label>
+                        <input matInput placeholder="please enter question" required name="name"
+                            [(ngModel)]="questionModel.content" #name="ngModel">
+                        <div *ngIf="name.invalid && (isSubmited || name.touched)">
+                            <mat-hint class="text-danger" *ngIf="name.errors?.['required']">question is required
+                            </mat-hint>
+                        </div>
+                    </mat-form-field>
+
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <mat-form-field class="field" appearance="outline">
+                                <mat-label>Option:1</mat-label>
+                                <input matInput placeholder="enter option 1" required name="option1"
+                                    [(ngModel)]="questionModel.options[0].content" #option1="ngModel">
+                                <div *ngIf="option1.invalid && (isSubmited || option1.touched)">
+                                    <mat-hint class="text-danger" *ngIf="option1.errors?.['required']">option
+                                        is required</mat-hint>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="field" appearance="outline">
+                                <mat-label>Option:2</mat-label>
+                                <input matInput placeholder="enter option 2" required name="option2"
+                                    [(ngModel)]="questionModel.options[1].content" #option2="ngModel">
+                                <div *ngIf="option2.invalid && (isSubmited || option2.touched)">
+                                    <mat-hint class="text-danger" *ngIf="option1.errors?.['required']">option
+                                        is required</mat-hint>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <mat-form-field class="field" appearance="outline">
+                                <mat-label>Option:3</mat-label>
+                                <input matInput placeholder="enter option 3" required name="option3"
+                                    [(ngModel)]="questionModel.options[2].content" #option3="ngModel">
+                                <div *ngIf="option3.invalid && (isSubmited || option3.touched)">
+                                    <mat-hint class="text-danger" *ngIf="option3.errors?.['required']">option
+                                        is required</mat-hint>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="field" appearance="outline">
+                                <mat-label>Option:4</mat-label>
+                                <input matInput placeholder="enter option 4" required name="option4"
+                                    [(ngModel)]="questionModel.options[3].content" #option4="ngModel">
+                                <div *ngIf="option4.invalid && (isSubmited || option4.touched)">
+                                    <mat-hint class="text-danger" *ngIf="option4.errors?.['required']">option
+                                        is required</mat-hint>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-form-field class="field" appearance="outline">
+                        <mat-label>Answer </mat-label>
+                        <mat-label>please choose an answer</mat-label>
+                        <mat-select #answer="ngModel" name="answer" [(ngModel)]="questionModel.answer" required>
+                            <div *ngFor="let op of questionModel.options; let i=index">
+                                <mat-option *ngIf="op.content" [value]="questionModel.options[i].content">
+                                    {{op.content}}
+                                </mat-option>
+                            </div>
+                        </mat-select>
+                        <mat-error *ngIf="answer.errors?.['required'] || answer.invalid">Please choose an answer
+                        </mat-error>
+
+                    </mat-form-field>
+
+                    <div class="container text-center">
+                        <button class="text-center mr-2" mat-stroked-button color="warn" type="submit">Update
+                            Question</button>
+                        <a class="text-center" mat-stroked-button color="primary"
+                            [routerLink]="'/admin/quiz/questions/'+questionModel.quiz.qid+'/'+questionModel.quiz.title">Cancel</a>
+                    </div>
+                </form>
+            </mat-card>
+
+        </div>
+
+
+    </div>
+</div>

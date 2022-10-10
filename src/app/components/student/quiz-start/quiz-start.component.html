@@ -1,0 +1,67 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="container text-center mt-2" *ngIf="!isSubmited">
+                <h3>On Going Quiz <b>{{title}}</b></h3>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col" *ngIf="!isSubmited">
+                <mat-card class="my-2" *ngFor="let q of question |paginate:config; let i= index">
+                    <mat-card-content>
+                        <p><b> Q{{(config.currentPage-1)*config.itemsPerPage +i+1}})</b> {{q.content}}</p>
+                        <div class="form-row ml-2">
+                            <div class="col-md-6">
+                                <p><input type="radio" [(ngModel)]="q.given_answer" [name]="'ans'+i"
+                                        [value]="q.options[0].content" />{{q.options[0].content}} </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><input type="radio" [(ngModel)]="q.given_answer" [name]="'ans'+i"
+                                        [value]="q.options[1].content" />{{q.options[1].content}} </p>
+                            </div>
+                        </div>
+                        <div class="form-row ml-2">
+                            <div class="col-md-6">
+                                <p><input type="radio" [(ngModel)]="q.given_answer" [name]="'ans'+i"
+                                        [value]="q.options[2].content" />{{q.options[2].content}} </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><input type="radio" [(ngModel)]="q.given_answer" [name]="'ans'+i"
+                                        [value]="q.options[3].content" />{{q.options[3].content}} </p>
+                            </div>
+                        </div>
+
+                    </mat-card-content>
+                </mat-card>
+
+                <div class="container text-center" *ngIf="isLastPage() && !isSubmited">
+                    <button mat-raised-button color="primary" (click)="onSubmitQuiz()">Submit Quiz</button>
+                </div>
+
+            </div>
+            <div class="container text-right mb-2" *ngIf="!isSubmited">
+                <pagination-controls (pageChange)="pageChange($event)" previousLabel="Prev" nextLabel="Next">
+                </pagination-controls>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-6 col" *ngIf="isSubmited">
+                <mat-card class="text-center">
+                    <mat-card-title>Result of Quiz {{title}}</mat-card-title>
+                    <mat-card-content>
+                        <div>
+                            <mat-spinner  mode="determinate" [value]="spinper" class="custom-spinner">
+                            </mat-spinner>
+                            <div class="inside_spinner"
+                                [innerText]="marksPercent+'%'"></div>
+                            <p>Quiz Name: <b>{{quiz_result.quiz.title}}</b></p>
+                            <p>Total marks got: <b>{{quiz_result.marksGot}}</b></p>
+                            <p>Total Question attempted: <b>{{quiz_result.attempted}}</b></p>
+                            <p>Total Correct Answers: <b>{{quiz_result.correctAns}}</b></p>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-stroked-button color="accent">Print</button>
+                        <button mat-stroked-button color="primary">Share</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

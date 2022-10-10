@@ -1,0 +1,25 @@
+.c1{
+    border-left: 4px solid red;
+}
+.c2{
+    border-left: 4px solid blue;
+}
+.c3{
+    border-left: 4px solid orangered;
+}
+
+.c4{
+    border-left: 4px solid yellowgreen;
+}
+.mycat{ 
+    padding: 7px;
+    margin: 14px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 6px;
+    
+}
+
+.rlink{
+    text-decoration: none;
+    color:rgb(133, 195, 9);
+}

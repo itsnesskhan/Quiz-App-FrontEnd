@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.nav-color{
+    background-color: #84fab0;
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+}
+
+.form-adust{
+    /* position:absolute;
+    left: 50%;
+    top: 50%;
+     transform: translate(-50%, -50%);
+     min-height: 200px;
+     z-index: -1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+ }
+
+ .field{
+    width: 100%;
+    font-size: 13px;
+
+}
+
+.example-header-image {
+    background-image: url('./assets/megaphone.png');
+    background-size: cover;
+  }

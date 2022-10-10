@@ -1,0 +1,16 @@
+.avatar {
+    margin-top: 16px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin:auto;
+}
+
+.table{
+    width: 100%;
+}
+
+.table th, td{
+    padding: 20px,50px;
+    
+}

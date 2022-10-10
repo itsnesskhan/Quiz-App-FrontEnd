@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto p-3">
+            <mat-card>
+                <form #quizform="ngForm" (ngSubmit)="quizSubmit(quizform)">
+                    <!-- {{quizModel|json}} -->
+                    <h2 class="text-center mb-3">Add Quiz</h2>
+                    <mat-form-field class="field" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Enter quiz name" required pattern="^[a-zA-Z ]*$" name="name"
+                            [(ngModel)]="quizModel.title" #name="ngModel">
+                        <div *ngIf="name.invalid && (submited || name.touched)">
+                            <mat-hint class="text-danger" *ngIf="name.errors?.['required']">name is required</mat-hint>
+                            <mat-hint class="text-danger" *ngIf="name.errors?.['pattern']">category can't be a number
+                            </mat-hint>
+                        </div>
+                    </mat-form-field>
+
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <mat-form-field class="field" appearance="outline">
+                                <mat-label>No. of Quesitons</mat-label>
+                                <input matInput placeholder="Number of questions" required pattern="^-?(0|[1-9]\d*)?$"
+                                    name="question" [(ngModel)]="quizModel.numOfQuestion" #question="ngModel">
+                                <div *ngIf="question.invalid && (submited || question.touched)">
+                                    <mat-hint class="text-danger" *ngIf="question.errors?.['required']">no of question
+                                        is required</mat-hint>
+                                    <mat-hint class="text-danger" *ngIf="question.errors?.['pattern']">enter a valid
+                                        number of question</mat-hint>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="field" appearance="outline">
+                                <mat-label>MaxMarks</mat-label>
+                                <input matInput placeholder="Enter maximum marks" required pattern="^-?(0|[1-9]\d*)?$"
+                                    name="maxMarks" [(ngModel)]="quizModel.maxMarks" #marks="ngModel">
+                                <div *ngIf="marks.invalid && (submited || marks.touched)">
+                                    <mat-error class="text-danger" *ngIf="marks.errors?.['required']">maximum marks is
+                                        required</mat-error>
+                                    <mat-error class="text-danger" *ngIf="marks.errors?.['pattern']">marks can't be a
+                                        character</mat-error>
+                                </div>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <mat-form-field appearance="fill" class="field">
+                        <mat-label>Quiz Category</mat-label>
+                        <mat-select required [(ngModel)]="quizModel.category.cid" name="category" #category="ngModel">
+                          <mat-option value="">select category</mat-option>
+                          <mat-option *ngFor="let c of categories" [value]="c.cid">
+                            {{c.name}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error class="text-danger" *ngIf="category.invalid ||  submited || category.touched">category is
+                        required</mat-error>
+                      </mat-form-field>
+
+                      <section class="example-section">
+                        <mat-checkbox name="active" #active="ngModel" [(ngModel)]="quizModel.active" class="example-margin">Active</mat-checkbox>
+                      </section>
+
+
+
+                    <div class="container text-center">
+                        <button class="text-center" mat-raised-button color="accent"
+                            type="submit">Add Quiz</button>
+                    </div>
+                </form>
+            </mat-card>
+
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container ">
+    <mat-card>
+        <mat-card-content>
+            <div class="bootstrap-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 offset-md-4 my-3">
+                            <h2 class="text-center">User Profile</h2>
+                            <img mat-card-image class="avatar"
+                                [src]="user.profileUrl ?? 'https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740&t=st=1661941516~exp=1661942116~hmac=28e22fe4bf7a7a9b34b3a06a8750cefdc026a0317dcf0017e675a8dce357d87a'"
+                                alt="image not found" />
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-10 offset-md-1">
+                            <table class="table border">
+                                <tr>
+                                    <th>Name</th>
+                                    <td>{{user.name.fname}} {{user.name.lname}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>{{user.email}}</td>
+                                </tr>
+            
+                                <tr>
+                                    <th>Role</th>
+                                    <td>{{userRole}}</td>
+                                </tr>
+            
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <a [routerLink]="'update'" class="btn btn-warning btn-flat mx-2">Update</a>
+                <a routerLink="signup" class="btn btn-primary btn-flat ">Share</a>
+
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+</div>

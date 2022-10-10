@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-6 col ">
+            <mat-card>
+                <div class="col-12 my-3">
+                    <h3>Read the instructions of this page carefully</h3>
+                    <p class="text-muted">One more step to go</p>
+                </div>
+                <mat-card-header>
+                    <mat-card-title>{{quiz.title}}</mat-card-title>
+                    <mat-card-subtitle>This quiz contains question related to {{quiz.title}}, just for testing purpose.
+                    </mat-card-subtitle>
+
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <br>
+                <mat-card-content>
+                    <h3 class="ml-3">Important instructions</h3>
+                    <ul class="my-2">
+                        <li>Quiz have total number of <b>{{quiz.numOfQuestion}}</b> questions.</li>
+                        <li>Use faster, realiable and continued internet connection</li>
+                        <li>You can skip a question and come back to it later</li>
+                        <li>The Quiz will start as soon as you click the start quiz button</li>
+                        <li>You have to submit quiz with given time period</li>
+                    </ul>
+                </mat-card-content>
+                <mat-divider></mat-divider>
+                <br>
+                <mat-card-content>
+                    <h3 class="ml-3">Attempting Quiz</h3>
+                    <ul class="my-2">
+                        <li>Click <b>Start Quiz</b> button to start the quiz</li>
+                        <li>Time will start the moment you click the start quiz button</li>
+                        <li>You cannot resume the quiz, if inturrepted due to any reason</li>
+                        <li>Click on the <b>Submit Quiz</b> button on compiltion of the test</li>
+                    </ul>
+                </mat-card-content>
+
+                <div class="text-center">
+                    <a mat-raised-button color="primary" [routerLink]="'/student-dashbored/quiz-start/'+quiz.qid+'/'+quiz.title">Start Quiz</a>
+
+                </div>
+            </mat-card>
+
+        </div>
+    </div>
+</div>

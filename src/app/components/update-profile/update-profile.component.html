@@ -1,0 +1,47 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12 mx-auto">
+                <div class="form-container mat-elevation-z8 p-3 ">
+                    <h3 class="text-center">Update Profile</h3>
+                    <!-- {{user |json}} -->
+                    <div class="profile-image text-center my-3">
+                        <img
+                            [src]="user.profileUrl ?? 'https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740&t=st=1661941516~exp=1661942116~hmac=28e22fe4bf7a7a9b34b3a06a8750cefdc026a0317dcf0017e675a8dce357d87a'"
+                            alt="image not found" />
+                        <button mat-mini-fab (click)="fileInput.click()" ><mat-icon>edit</mat-icon></button>
+                    </div>
+
+                    <form #profileform="ngForm" (ngSubmit)="updateProfile(profileform)">
+                        <mat-form-field class="field" appearance="outline">
+                           <mat-label>First Name</mat-label>
+                           <input matInput type="text" [(ngModel)]="user.name.fname" name="fname" #fname="ngModel" placeholder="enter your first name" /> 
+                        </mat-form-field>
+
+                        <mat-form-field class="field" appearance="outline">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput [(ngModel)]="user.name.lname" name="lanme"type="text" placeholder="enter your last name" /> 
+                         </mat-form-field>
+
+                         <mat-form-field class="field" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput [(ngModel)]="user.email" name="email" type="email" placeholder="enter your email" /> 
+                         </mat-form-field>
+
+                        
+                        
+                    <input #fileInput hidden class="ml-2" (change)="onFileSelected($event)"  name="profile" type="file" placeholder="select a file" /> 
+                        
+                        <div class="container text-center my-2">
+                            <button class="text-center mx-2" mat-raised-button color="accent"
+                                type="submit">Update</button>
+                                <a class="text-center" mat-stroked-button color="warn"
+                                type="submit" routerLink="/admin/quizes" >Back</a>
+                        </div>
+                         
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

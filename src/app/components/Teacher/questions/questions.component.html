@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container ">
+                <h3 class="d-inline mr-3">Questions of {{title}}</h3>
+                <a class="text-center" *ngIf="showAddButton" mat-raised-button color="primary"
+                    [routerLink]="'/admin/quiz/add-question/'+qId+'/'+title">Add New Question</a>
+                <p *ngIf="qCount>0" class="text-muted ml-2">{{qCount}} More Question to add</p>
+            </div>
+
+            <mat-card class="my-2" *ngFor="let q of question |paginate:config; let i= index">
+                <mat-card-content>
+                    <p><b> Q{{(config.currentPage-1)*2 +i+1}})</b> {{q.content}}</p>
+                    <div class="form-row ml-2">
+                        <div class="col-md-6">
+                            <p><b>(A)</b> {{q.options[0].content}}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><b>(B)</b> {{q.options[1].content}}</p>
+                        </div>
+                    </div>
+                    <div class="form-row ml-2">
+                        <div class="col-md-6">
+                            <p *ngIf="q.options[2].content"><b>(C)</b> {{q.options[2].content}}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p *ngIf="q.options[3].content"><b>(D)</b> {{q.options[3].content}}</p>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <p class="ml-2 mt-2"><b>Correct Answer :</b> {{q.answer}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <a mat-stroked-button color="warn" [routerLink]="'/admin/quiz/update-question/'+q.question_id">Update</a>
+                    <button mat-stroked-button color="primary" (click)="deleteQuestion(q.question_id)" class="mx-2">Delete</button>
+                </mat-card-actions>
+            </mat-card>
+           <div class="text-right mb-2" *ngIf="config.totalItems>config.itemsPerPage">
+            <pagination-controls (pageChange)="pageChange($event)" previousLabel="Prev" nextLabel="Next">
+            </pagination-controls>
+           </div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="form-adust text-center">
+        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 border  p-3">
+            <form #signupform="ngForm" (ngSubmit)="loginSubmit()">
+                <div *ngIf="error" class="alert alert-danger" role="alert">
+                    {{error}}
+                  </div>
+                <h2 class="text-center mb-3">Login Here</h2>
+                <mat-form-field class="field" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Enter your email" required
+                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email="ngModel" name="username"
+                        [(ngModel)]="authLogin.username">
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <mat-hint class="text-danger" *ngIf="email.errors?.['required']">email is required</mat-hint>
+                        <mat-hint class="text-danger" *ngIf="email.errors?.['pattern']">enter a valid email address
+                        </mat-hint>
+                    </div>
+                </mat-form-field>
+
+
+                <mat-form-field class="field" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <!-- {{pass.errors?.['required']}} -->
+                    <input matInput [type]="hidePass ? 'password' : 'text'" #pass="ngModel"
+                        placeholder="Enter your password" name="password" required [(ngModel)]="authLogin.password">
+                    <button mat-icon-button matSuffix (click)="hidePass = !hidePass">
+                        <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <!-- [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"> -->
+                    <mat-hint class="text-danger" [class.d-none]="pass.valid || pass.untouched">password is required
+                    </mat-hint>
+                </mat-form-field>
+                <p class="text-end float-right mb-2 "><a href="#!" class="fw-bold forgot"><u>Forgot Password?</u></a>
+                </p>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-block gradient-custom-4" [disabled]="signupform.form.invalid"
+                        type="submit">Register
+                        Account</button>
+                </div>
+            </form>
+            <p class="  text-center text-muted mt-3 mb-0">Don't have an account? <a href="#!"
+                    class=" text-body"><u>Signup Here</u></a></p>
+        </div>
+
+
+    </div>
+</div>

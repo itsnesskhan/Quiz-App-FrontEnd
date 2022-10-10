@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container text-center mt-3">
+                <a mat-raised-button color="primary" routerLink="/admin/add-category">Add New Category</a>
+            </div>
+            <mat-list>
+                <div mat-subheader>Categories</div>
+                <mat-list-item *ngFor="let c of categories">
+                    <mat-icon mat-list-icon>folder</mat-icon>
+                    <div mat-line>{{c.name}}</div>
+                    <a mat-mini-fab color="warn"[routerLink]="['/admin/categories/update',c.cid]" >
+                        <mat-icon>build</mat-icon>
+                    </a>
+                    <button mat-mini-fab color="primary" class="mx-2" (click)="deleteCat(c.cid)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+
+                    <mat-divider></mat-divider>
+                </mat-list-item>
+            </mat-list>
+            
+
+        </div>
+    </div>
+</div>

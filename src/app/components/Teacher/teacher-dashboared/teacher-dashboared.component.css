@@ -1,0 +1,10 @@
+.qlink{
+    text-decoration: none;
+    color: rgba(255, 42, 0, 0.667);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    font-weight:bold;
+}
+
+.qlink:hover{
+    color: greenyellow;
+}

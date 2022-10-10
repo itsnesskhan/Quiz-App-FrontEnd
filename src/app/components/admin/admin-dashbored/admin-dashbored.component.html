@@ -1,0 +1,30 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="my-3" >Admin Dashbored</h1>
+                <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+                <table class="mat-elevation-z2 table">
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                    </tr>
+                    <tr *ngFor="let user of users |paginate:config,let i =index">
+                        <td>{{ (config.currentPage-1)*config.itemsPerPage+ i+1}}</td>
+                        <td>{{user.name.fname}} {{user.name.lname}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.password}}</td>
+                        <th>{{user.roles[0].name}}</th>
+                    </tr>
+                </table>
+                <div class="text-right mb-2" *ngIf="config.totolItems>config.itemsPerPage">
+                    <pagination-controls (pageChange)="pageChange($event)" previousLabel="Prev" nextLabel="Next">
+                    </pagination-controls>
+                   </div>
+            </div>
+        </div>
+    </div>
+</div>

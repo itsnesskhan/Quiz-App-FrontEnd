@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col mt-3">
+            <h1>Student Dashboared</h1>
+        </div>
+    </div>
+    <div class="row" *ngIf="quizes">
+        <div class="col-lg-6 col-md-6 col" *ngFor="let q of quizes,let i = index">
+            <a routerLink="student/quizez/{{q.qid}}" style="text-decoration:none ;">
+                <mat-card class="my-3">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>{{q.title}}</mat-card-title>
+                        <mat-card-subtitle>{{q.category.name}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-actions>
+
+                        <button mat-flat-button color="accent" class="mx-2">Qustions:{{q.numOfQuestion}}</button>
+                        <button mat-stroked-button color="primary">Max Marks: {{q.maxMarks}}</button>
+                        <a mat-stroked-button color="primary" [routerLink]="'/student-dashbored/instruction/'+q.qid">Start Quiz</a>
+
+                    </mat-card-actions>
+                </mat-card>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center my-2" *ngIf="quizes.length ==0">
+            <mat-card>
+                <mat-card-title>No Quizes to show</mat-card-title>
+            </mat-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="modal fade" id="profile-details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title " id="exampleModalLabel">User Information</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            working
+                        </div>
+                        
+                        <!-- user-edti -->
+                        <div id="user-edit" style="display: none;">
+                        <form action="EditServlet" method="post" enctype="multipart/form-data">
+                        
+                        
+                        </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" id=edit-profile-btn>Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+

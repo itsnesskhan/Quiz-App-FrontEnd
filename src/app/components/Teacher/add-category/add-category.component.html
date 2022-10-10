@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto p-3">
+            <mat-card>
+                <form #categoryform="ngForm" (ngSubmit)="catSubmit(categoryform)">
+                    <!-- {{categoryModel|json}} -->
+                    <h2 class="text-center mb-3">Add Category</h2>
+                    <mat-form-field class="field" appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Enter category name" required pattern="^[a-zA-Z ]*$" name="name"
+                            [(ngModel)]="categoryModel.name" #name="ngModel">
+                        <div *ngIf="name.invalid && (isSubmited || name.touched)">
+                            <mat-hint class="text-danger" *ngIf="name.errors?.['required']">category name is required</mat-hint>
+                            <mat-hint class="text-danger" *ngIf="name.errors?.['pattern']">category can't be a number
+                            </mat-hint>
+                        </div>
+                    </mat-form-field>
+
+
+                    <div class="container text-center">
+                        <button class="text-center" mat-raised-button color="accent"
+                             type="submit">Add Category</button>
+                    </div>
+                </form>
+            </mat-card>
+
+        </div>
+
+
+    </div>
+</div>

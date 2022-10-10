@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container text-center mt-3">
+                <a mat-raised-button color="primary" routerLink="/admin/add-quiz">Add New Quiz</a>
+            </div>
+            <mat-card *ngFor="let q of quizes| paginate:config" class="my-3">
+
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{q.title}}</mat-card-title>
+                    <mat-card-subtitle>{{q.category.name}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+
+
+                    <button mat-flat-button color="accent" [routerLink]="'/teacher/quiz/questions/'+q.qid+'/'+q.title"
+                        class="mx-2">Qustions:{{q.numOfQuestion}}</button>
+                    <button mat-stroked-button color="primary">Max Marks: {{q.maxMarks}}</button>
+
+                    <a mat-stroked-button color="warn" [routerLink]="['/teacher/quiz/update/',q.qid]">Update</a>
+                    <button mat-stroked-button color="primary" class="mx-2" (click)="deleteQuiz(q.qid)">Delete</button>
+
+
+                </mat-card-actions>
+
+
+            </mat-card>
+            <div class="text-right mb-2" *ngIf="config.totalItems>config.itemsPerPage">
+                <pagination-controls (pageChange)="PageChange($event)" previousLabel="Prev" nextLabel="Next">
+                </pagination-controls>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.gradient-custom-4 {
+    background: #84fab0;
+background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+}
+.forgot{
+    color: li;
+    font-weight: bold;
+    font-size: 15px;
+}
+.text-danger{
+    font-size: 15px;
+}
+
+
+.field{
+    width: 100%;
+    font-size: 13px;
+
+}
+

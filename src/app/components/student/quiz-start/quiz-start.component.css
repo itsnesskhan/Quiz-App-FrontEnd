@@ -1,0 +1,14 @@
+:host ::ng-deep .custom-spinner circle{   
+    stroke: #0CC20C;
+}
+.custom-spinner{
+    margin:auto;
+}
+
+.inside_spinner{
+    position:relative;
+    top: -60px; left: 10px;
+    font-weight:bold;
+    color:#0CC20C;
+    font-size: 20px;
+}

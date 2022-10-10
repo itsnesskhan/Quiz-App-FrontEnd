@@ -1,0 +1,31 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="my-3" >Teacher Dashbored</h1>
+                <table class="mat-elevation-z2 table">
+                    <tr>
+                        <th>No.</th>
+                        <th>Student Name</th>
+                        <th>Marks Got</th>
+                        <th>Total Correct</th>
+                        <th>Total Attempted</th>
+                        <th>Quiz</th>
+                    </tr>
+                    <tr *ngFor="let result of quiz_result |paginate:config,let i =index">
+                        <td>{{ (config.currentPage-1)*config.itemsPerPage+ i+1}}</td>
+                        <td>{{result.user.name.fname}} {{result.user.name.lname}}</td>
+                        <td>{{result.marksGot}}</td>
+                        <td>{{result.correctAns}}</td>
+                        <td>{{result.attempted}}</td>
+                        <td><a href="#" routerLink="quizes" class="qlink">{{result.quiz.title}}</a></td>
+                    </tr>
+                </table>
+                <div class="text-right mb-2" *ngIf="config.totolItems>config.itemsPerPage">
+                    <pagination-controls (pageChange)="pageChange($event)" previousLabel="Prev" nextLabel="Next">
+                    </pagination-controls>
+                   </div>
+            </div>
+        </div>
+    </div>
+</div>

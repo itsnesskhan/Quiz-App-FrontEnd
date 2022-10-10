@@ -1,0 +1,76 @@
+<div class="container">
+        <div class="form-adust ">
+            <div class="border p-3">
+                <form  (ngSubmit)="formSubmit()" #signform="ngForm">
+                    <div *ngIf="error" class="alert alert-danger" role="alert">
+                        {{error}}
+                      </div>
+                      
+                    <h2 class="text-center mb-3">Create an Account</h2>
+
+                    <div class="form-row ">
+                        <div class="form-group col-md-6">
+                            <input type="text" [(ngModel)]="user.name.fname" required pattern="[A-Z][a-z]*"
+                                #fname="ngModel" name="fname" class="form-control" placeholder="First name"
+                                [class.is-invalid]="fname.invalid && fname.touched" />
+                            <div *ngIf="fname.invalid && (fname.dirty ||fname.touched)">
+                                <div class="text-danger" *ngIf="fname.errors?.['required']">firstname is required
+                                </div>
+                                <div class="text-danger" *ngIf="fname.errors?.['pattern']">firstname have characters
+                                    only</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" required pattern="[A-Z][a-z]*"
+                                [class.is-invalid]="lname.invalid && lname.touched" [(ngModel)]="user.name.lname"
+                                name="lname" #lname="ngModel" placeholder="Last name" />
+                            <div *ngIf="lname.invalid && (lname.dirty ||lname.touched)">
+                                <div class="text-danger" *ngIf="lname.errors?.['required']">lastname is required
+                                </div>
+                                <div class="text-danger" *ngIf="lname.errors?.['pattern']">lastname have characters
+                                    only</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row ">
+                        <div class="form-group col-md-6">
+                            <input type="email" class="form-control" required
+                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="user.email"
+                                name="email" #email="ngModel" placeholder="Email" />
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                                <div class="text-danger" *ngIf="email.errors?.['required']">email is required</div>
+                                <div class="text-danger" *ngIf="email.errors?.['pattern']">enter a valid email
+                                    address</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="password" class="form-control" required
+                                pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+                                [class.is-invalid]="password.invalid && password.touched" [(ngModel)]="user.password"
+                                #password="ngModel" name="password" placeholder="Password" />
+                            <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                                <div class="text-danger" *ngIf="password.errors?.['required']">password is required
+                                </div>
+                                <div class="text-danger" *ngIf="password.errors?.['pattern']">password is too weak
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary btn-block form-input" type="submit"
+                            [disabled]="signform.form.invalid">Register
+                            Account</button>
+                    </div>
+                </form>
+                <p class="text-center text-muted mt-3 mb-0">Have already an account? <a href="#!"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+            </div>
+            
+        </div>
+</div>
